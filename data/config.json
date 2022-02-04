@@ -1,0 +1,7 @@
+{
+    "dbhost" : "localhost",
+    "dbname" : "feltalalok",
+    "dbuser" : "root",
+    "dbpasswd" : "",
+    "dbport" : "3306"
+}
