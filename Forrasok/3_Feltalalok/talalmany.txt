@@ -1,4 +1,3 @@
-tkod	talnev
 78	mikrobarázdás hanglemez
 24	fázisváltós villamos mozdony
 31	Frommer-pisztoly

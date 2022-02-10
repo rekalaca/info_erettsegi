@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const { harommotor } = require("./modules/mysql");
+const { harommotor, forgo, toll } = require("./modules/mysql");
 const port = 4444;
 
 app.set("view engine", "ejs");
@@ -15,6 +15,20 @@ app.get("/harommotor", (req, res) => {
     harommotor((err, harommotor) => {
         if (err) throw err;
         res.render("harommotor", { harommotor });
+    });
+});
+
+app.get("/forgo", (req, res) => {
+    forgo((err, forgo) => {
+        if (err) throw err;
+        res.render("forgo", { forgo });
+    });
+});
+
+app.get("/toll", (req, res) => {
+    toll((err, toll) => {
+        if (err) throw err;
+        res.render("toll", { toll });
     });
 });
 
