@@ -25,7 +25,7 @@ const harommotor = (callback) => {
 
 const forgo = (callback) => {
     const mySelect =
-    `SELECT talnev FROM talalmany, kutato, kapcsol WHERE kutato.nev = "Forgó László" AND kutato.fkod = kapcsol.fkod AND kapcsol.tkod = talalmany.tkod;`; //A 3-as találmány hiányzik a listából., mert z ingyenes appok max 50 sort importálnak txt file-ból
+    `SELECT talnev FROM talalmany, kutato, kapcsol WHERE kutato.nev = "Forgó László" AND kutato.fkod = kapcsol.fkod AND kapcsol.tkod = talalmany.tkod;`; 
     connection.query(mySelect, (err, result) => {
         if(err) callback(err, null);
         callback(null, JSON.parse(JSON.stringify(result)));
@@ -34,11 +34,20 @@ const forgo = (callback) => {
 
 const toll = (callback) => {
     const mySelect =
-    `SELECT nev, meghal-szul AS 'Élt' FROM kutato,talalmany,kapcsol WHERE talalmany.talnev="golyóstoll" AND talalmany.tkod=kapcsol.tkod AND kapcsol.fkod=kutato.fkod;`; // mert itt is kiesik az 50 sorból...
+    `SELECT nev, meghal-szul AS 'Élt' FROM kapcsol INNER JOIN kutato ON kapcsol.fkod=kutato.fkod INNER JOIN talalmany ON kapcsol.tkod=talalmany.tkod WHERE talalmany.talnev="golyóstoll";`; 
     connection.query(mySelect, (err, result) => {
         if(err) callback(err, null);
         callback(null, JSON.parse(JSON.stringify(result)));
     });
 };
 
-module.exports = {harommotor, forgo, toll};
+const nevtelen = (callback) => {
+    const mySelect =
+    `SELECT talnev FROM talalmany WHERE (talalmany.tkod NOT IN (SELECT kapcsol.tkod FROM kapcsol));`; 
+    connection.query(mySelect, (err, result) => {
+        if(err) callback(err, null);
+        callback(null, JSON.parse(JSON.stringify(result)));
+    });
+};
+
+module.exports = {harommotor, forgo, toll, nevtelen};

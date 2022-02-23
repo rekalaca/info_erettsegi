@@ -17,18 +17,18 @@
     </div>
     <div id="body">
         <table>                
-            <% if(toll.length === 0) {%>
+            <% if(nevtelen.length === 0) {%>
                 <h3>Nincs a listában ilyen...</h3>
             <% }
             else {%>
                 <tr>
-                <th>A golyóstoll feltalálójának neve és megélt éveinek száma:</th>
+                <th>Azon találmányok neve, amelyeknek nincs megadva a feltalálójának a neve az adatbázisban:</th>
             </tr>
-             <%toll.forEach(toll=> {
+             <%nevtelen.forEach(nevtelen=> {
                 %>
                 <tr>
                     <td>
-                        <%= toll.nev %> , aki élt <%= toll.Élt %> évet !
+                        <%= nevtelen.talnev %>
                     </td>
                 </tr>
                 <% })} %>
