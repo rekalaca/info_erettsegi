@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Comforter&family=Teko:wght@600&display=swap');
+        </style>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+    <title>Feltalálók</title>
+</head>
+
+<body>
+    <div id="header">
+        <h1>Kutatók & Feltalálók</h1>
+    </div>
+    <div id="body">
+        <table>                
+            <% if(felszazad.length === 0) {%>
+                <h3>Nincs a listában ilyen...</h3>
+            <% }
+            else {%>
+                <tr>
+                <th>Azon feltalálók neve és találmánya, aki a XIX. század első felében is éltek:</th>
+            </tr>
+             <%felszazad.forEach(felszazad=> {
+                %>
+                <tr>
+                    <td>
+                        <%= felszazad.nev %> :
+                        <%= felszazad.talnev %>
+                    </td>
+                </tr>
+                <% })} %>
+        </table>
+
+    </div>
+    <div id="gomb"><a href="/"><button type="button" class="btn btn-success">Vissza a Főoldalra!</button></a></div>
+    <hr>
+    <div id="footer">
+        <p>Összeállította: Rékási László</p>
+    </div>
+
+</body>
+
+</html>

@@ -1,7 +1,7 @@
 const express = require('express');
 const path = require('path');
 const app = express();
-const { harommotor, forgo, toll, nevtelen } = require("./modules/mysql");
+const { harommotor, forgo, toll, nevtelen, felszazad } = require("./modules/mysql");
 const port = 4444;
 
 app.set("view engine", "ejs");
@@ -36,6 +36,13 @@ app.get("/nevtelen", (req, res) => {
     nevtelen((err, nevtelen) => {
         if (err) throw err;
         res.render("nevtelen", { nevtelen });
+    });
+});
+
+app.get("/felszazad", (req, res) => {
+    felszazad((err, felszazad) => {
+        if (err) throw err;
+        res.render("felszazad", { felszazad });
     });
 });
 

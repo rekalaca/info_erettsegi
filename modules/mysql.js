@@ -50,4 +50,13 @@ const nevtelen = (callback) => {
     });
 };
 
-module.exports = {harommotor, forgo, toll, nevtelen};
+const felszazad = (callback) => {
+    const mySelect =
+    `SELECT nev, talnev FROM kapcsol INNER JOIN kutato ON kutato.fkod=kapcsol.fkod INNER JOIN talalmany ON talalmany.tkod=kapcsol.tkod WHERE kutato.szul <= 1850 AND kutato.meghal >= 1801 ORDER BY nev;`; 
+    connection.query(mySelect, (err, result) => {
+        if(err) callback(err, null);
+        callback(null, JSON.parse(JSON.stringify(result)));
+    });
+};
+
+module.exports = {harommotor, forgo, toll, nevtelen, felszazad};

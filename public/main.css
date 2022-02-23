@@ -16,9 +16,9 @@ h1{
 
 #body{
     text-align: center;
-    margin-top: 60px;
-    margin-bottom: 100px;
     font-family: 'Cinzel', serif;
+    width: 800px;
+    margin: 0 auto 0 auto;
 }
 #gomb{
     text-align: center;
@@ -29,7 +29,7 @@ h1{
 table{
     border: 1px solid brown;
     margin: 0 auto 0 auto;
-    width: 350px;
+    width: 550px;
 }
 th,td{
     border: 1px solid brown;
@@ -47,9 +47,13 @@ th,td{
 hr{
     width: 70%;
     margin: 0 auto 0 auto;
+    margin-bottom: 20px;
 }
 h3{
     font-family: 'Cinzel', serif;
     color: rgb(251, 255, 0);
     font-style: italic;
+}
+#header{
+    margin-bottom: 50px;
 }
